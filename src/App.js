@@ -23,6 +23,16 @@ function App() {
     setIncompleteTodos(newTodos);
   }
 
+  const onClickComplete = (i) => {
+    const newIncompleteTodos = [...incompleteTodos];
+    const newCompleteTodos = [...completeTodos, incompleteTodos[i]];
+
+    newIncompleteTodos.splice(i, 1);
+
+    setCompleteTodos(newCompleteTodos)
+    setIncompleteTodos(newIncompleteTodos);
+  }
+
   return (
     <div className="App-header">
       <h1>TODOリスト</h1>
@@ -38,7 +48,7 @@ function App() {
           return(
             <div key={todo}>
               <li>{todo}</li>
-              <button>完了</button>
+              <button onClick={() => onClickComplete(index)}>完了</button>
               <button onClick={() => onClickDelete(index)}>削除</button>
             </div>
           )
