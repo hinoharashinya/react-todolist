@@ -17,6 +17,12 @@ function App() {
     setInputTodo("");
   }
 
+  const onClickDelete = (i) => {
+    const newTodos = [...incompleteTodos];
+    newTodos.splice(i, 1);
+    setIncompleteTodos(newTodos);
+  }
+
   return (
     <div className="App-header">
       <h1>TODOリスト</h1>
@@ -28,12 +34,12 @@ function App() {
       <div>
         <h2>未完了のTODO</h2>
         <ul>
-          {incompleteTodos.map((todo) => {
+          {incompleteTodos.map((todo, index) => {
           return(
             <div key={todo}>
               <li>{todo}</li>
               <button>完了</button>
-              <button>削除</button>
+              <button onClick={() => onClickDelete(index)}>削除</button>
             </div>
           )
           })}
