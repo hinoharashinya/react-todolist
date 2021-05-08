@@ -1,5 +1,6 @@
 import './App.css';
 import {useState} from "react";
+import {InputTodo} from "./components/InputTodo";
 
 function App() {
   const [inputTodo, setInputTodo] = useState("");
@@ -46,11 +47,7 @@ function App() {
   return (
     <div className="App-header">
       <h1>TODOリスト</h1>
-      <div>
-        <h2>入力エリア</h2>
-        <input placeHolder="TODOを入力" value={inputTodo} onChange={onChangeInputTodo}/>
-        <button onClick={onClickAdd}>追加</button>
-      </div>
+      <InputTodo inputTodo={inputTodo} onChangeInputTodo={onChangeInputTodo} onClickAdd={onClickAdd}/>
       <div>
         <h2>未完了のTODO</h2>
         <ul>
