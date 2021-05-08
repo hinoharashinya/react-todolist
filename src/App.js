@@ -33,6 +33,16 @@ function App() {
     setIncompleteTodos(newIncompleteTodos);
   }
 
+  const onClickReturn = (i) => {
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[i]];
+    const newCompleteTodos = [...completeTodos];
+
+    newCompleteTodos.splice(i, 1);
+
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newCompleteTodos);
+  }
+
   return (
     <div className="App-header">
       <h1>TODOリスト</h1>
@@ -58,11 +68,11 @@ function App() {
       <div>
         <h2>完了のTODO</h2>
           <ul>
-            {completeTodos.map((todo) => {
+            {completeTodos.map((todo, index) => {
             return(
               <div key={todo}>
                 <li>{todo}</li>
-                <button>戻す</button>
+                <button onClick={() => onClickReturn(index)}>戻す</button>
               </div>
             )
             })}
