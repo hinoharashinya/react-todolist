@@ -1,6 +1,7 @@
 import './App.css';
 import {useState} from "react";
 import {InputTodo} from "./components/InputTodo";
+import { IncompleteTodos } from './components/IncompleteTodos';
 
 function App() {
   const [inputTodo, setInputTodo] = useState("");
@@ -48,20 +49,7 @@ function App() {
     <div className="App-header">
       <h1>TODOリスト</h1>
       <InputTodo inputTodo={inputTodo} onChangeInputTodo={onChangeInputTodo} onClickAdd={onClickAdd}/>
-      <div>
-        <h2>未完了のTODO</h2>
-        <ul>
-          {incompleteTodos.map((todo, index) => {
-          return(
-            <div key={todo}>
-              <li>{todo}</li>
-              <button onClick={() => onClickComplete(index)}>完了</button>
-              <button onClick={() => onClickDelete(index)}>削除</button>
-            </div>
-          )
-          })}
-        </ul>
-      </div>
+      <IncompleteTodos incompleteTodos={incompleteTodos} onClickComplete={onClickComplete} onClickDelete={onClickDelete} />
       <div>
         <h2>完了のTODO</h2>
           <ul>
