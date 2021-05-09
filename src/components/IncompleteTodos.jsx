@@ -1,7 +1,7 @@
 export const IncompleteTodos = (props) => {
   const {incompleteTodos, onClickComplete, onClickDelete} = props;
   return(
-    <div>
+    <div style={{"backgroundColor" : "lightblue", "marginTop" : "18px", "padding" : "0px 18px"}}>
         <h2>未完了のTODO</h2>
         <ul>
           {incompleteTodos.map((todo, index) => {
